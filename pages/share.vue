@@ -1,25 +1,31 @@
 <template>
   <div>
-    <mu-list textline="two-line">
-      <mu-list-item avatar button :ripple="false" v-for="(item, index) in list" :key="index">
-        <mu-list-item-action>
-          <mu-avatar>
-            <img :src="item.author.avatar_url">
-          </mu-avatar>
-        </mu-list-item-action>
-        <mu-list-item-content>
-          <mu-list-item-title>{{item.title}}</mu-list-item-title>
-          <mu-list-item-sub-title>
-            {{item.last_reply_at | time('YYYY-MM-DD HH:mm:ss')}}
-          </mu-list-item-sub-title>
-        </mu-list-item-content>
-      </mu-list-item>
-    </mu-list>
-    <mu-flex
-      justify-content="center"
-      style="margin: 32px 0;">
-      <mu-pagination @change="onPageChange" raised :total="1000" :current.sync="current"></mu-pagination>
-    </mu-flex>
+    <mu-load-more
+      :loaded-all="loadAll"
+      :loading="loading"
+      @load="get">
+      <mu-list textline="two-line">
+        <mu-list-item
+          avatar
+          button
+          :ripple="false"
+          v-for="(item, index) in list"
+          :key="index"
+          @click="handleDetail">
+          <mu-list-item-action>
+            <mu-avatar>
+              <img :src="item.author.avatar_url">
+            </mu-avatar>
+          </mu-list-item-action>
+          <mu-list-item-content>
+            <mu-list-item-title>{{item.title}}</mu-list-item-title>
+            <mu-list-item-sub-title>
+              {{item.last_reply_at | time('YYYY-MM-DD HH:mm:ss')}}
+            </mu-list-item-sub-title>
+          </mu-list-item-content>
+        </mu-list-item>
+      </mu-list>
+    </mu-load-more>
   </div>
 </template>
 
@@ -32,7 +38,7 @@ export default {
       const { data: { data } } = await api.getTopics({
         page: 1,
         tab: 'share',
-        limit: 10,
+        limit: 30,
         mdrender: false
       })
       return {
@@ -47,23 +53,31 @@ export default {
     return {
       list: [],
       current: 1,
+      loadAll: false,
+      loading: false,
       filter: {
         page: 1,
         tab: 'share',
-        limit: 10
+        limit: 30
       }
     }
   },
 
   methods: {
     async get (filter) {
-      const { data: { data } } = await api.getTopics(filter)
-      this.list = [...data]
+      if (this.loadAll) return
+      if (this.loading) return
+      this.filter.page += 1
+      this.loading = true
+      const { data: { data } } = await api.getTopics(this.filter)
+      this.list = [...this.list, ...data]
+      if (data.length === 0) this.loadAll = true
+      setTimeout(() => {
+        this.loading = false
+      }, 50)
     },
 
-    async onPageChange () {
-      this.filter = { ...this.filter, page: this.current }
-      await this.get(this.filter)
+    handleDetail(id) {
     }
   }
 }

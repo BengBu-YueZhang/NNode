@@ -41,6 +41,12 @@ export default {
         this.active = '/good'
         break
     }
+  },
+
+  methods: {
+    onDetail (id) {
+      console.log(id)
+    }
   }
 }
 </script>
