@@ -23,7 +23,23 @@
 export default {
   data () {
     return {
+      // 默认
       active: '/ask'
+    }
+  },
+
+  created () {
+    const { fullPath } = this.$route
+    switch (fullPath) {
+      case '/ask':
+        this.active = '/ask'
+        break
+      case '/share':
+        this.active = '/share'
+        break
+      case '/good':
+        this.active = '/good'
+        break
     }
   }
 }
