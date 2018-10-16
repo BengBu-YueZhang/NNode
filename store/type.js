@@ -1,0 +1,3 @@
+export const GET_TOPICS_DETAIL = 'GET_TOPICS_DETAIL'
+
+export const SET_DETAIL_ID = 'SET_DETAIL_ID'
