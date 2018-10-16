@@ -85,6 +85,8 @@ export default {
     },
 
     handleDetail (id) {
+      this.$store.dispatch('SET_DETAIL_ID', id)
+      this.$router.push({ path: '/detail' })
     }
   }
 }

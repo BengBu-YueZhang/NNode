@@ -11,7 +11,7 @@
           :ripple="false"
           v-for="(item, index) in list"
           :key="index"
-          @click="handleDetail">
+          @click="handleDetail(item.id)">
           <mu-list-item-action>
             <mu-avatar>
               <img :src="item.author.avatar_url">
@@ -26,11 +26,6 @@
         </mu-list-item>
       </mu-list>
     </mu-load-more>
-    <!-- <mu-flex
-      justify-content="center"
-      style="margin: 32px 0;">
-      <mu-pagination @change="onPageChange" raised :total="1000" :current.sync="current"></mu-pagination>
-    </mu-flex> -->
   </div>
 </template>
 
@@ -88,6 +83,8 @@ export default {
     },
 
     handleDetail(id) {
+      this.$store.dispatch('SET_DETAIL_ID', id)
+      this.$router.push({ path: '/detail' })
     }
   }
 }

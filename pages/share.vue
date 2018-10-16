@@ -11,7 +11,7 @@
           :ripple="false"
           v-for="(item, index) in list"
           :key="index"
-          @click="handleDetail">
+          @click="handleDetail(item.id)">
           <mu-list-item-action>
             <mu-avatar>
               <img :src="item.author.avatar_url">
@@ -84,6 +84,8 @@ export default {
     },
 
     handleDetail(id) {
+      this.$store.dispatch('SET_DETAIL_ID', id)
+      this.$router.push({ path: '/detail' })
     }
   }
 }
