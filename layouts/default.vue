@@ -13,7 +13,9 @@
         精华
       </mu-tab>
     </mu-tabs>
-    <nuxt/>
+    <section class="container">
+      <nuxt/>
+    </section>
   </div>
 </template>
 
@@ -23,10 +25,6 @@ export default {
     return {
       active: '/ask'
     }
-  },
-
-  created () {
-    console.log(this.$route)
   }
 }
 </script>

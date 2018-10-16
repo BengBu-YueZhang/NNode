@@ -27,14 +27,16 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/style/reset.css'
+    '~/assets/style/reset.css',
+    '~/assets/style/main.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/muse.js'
+    '@/plugins/muse.js',
+    '@/plugins/filter.js'
   ],
 
   /*
@@ -55,7 +57,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['axios', 'muse-ui'],
+    vendor: ['axios', 'muse-ui', 'moment'],
     /*
     ** You can extend webpack config here
     */
