@@ -55,6 +55,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['axios', 'muse-ui'],
     /*
     ** You can extend webpack config here
     */

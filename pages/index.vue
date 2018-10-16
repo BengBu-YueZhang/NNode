@@ -1,12 +1,16 @@
 <template>
-  <section class="container">
+  <section>
   </section>
 </template>
 
 <script>
 export default {
+  middleware: 'home_redirect'
 }
 </script>
 
-<style>
+<style scoped>
+.tabs {
+  width: 100% !important;
+}
 </style>
