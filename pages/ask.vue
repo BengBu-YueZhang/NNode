@@ -32,6 +32,15 @@
 import api from '~/api'
 
 export default {
+  head () {
+    return {
+      title: '问答',
+      link: [
+        { hid: 'icon', rel: 'icon', type: 'image/x-icon', href: 'https://cn.vuejs.org/images/logo.png' }
+      ]
+    }
+  },
+
   async asyncData (context) {
     try {
       const { data: { data } } = await api.getTopics({

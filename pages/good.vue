@@ -38,6 +38,12 @@
 import api from '~/api'
 
 export default {
+  head () {
+    return {
+      title: '精华'
+    }
+  },
+
   async asyncData (context) {
     try {
       const { data: { data } } = await api.getTopics({

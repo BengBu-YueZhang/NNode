@@ -33,6 +33,12 @@
 import api from '~/api'
 
 export default {
+  head () {
+    return {
+      title: '分享'
+    }
+  },
+
   async asyncData (context) {
     try {
       const { data: { data } } = await api.getTopics({
