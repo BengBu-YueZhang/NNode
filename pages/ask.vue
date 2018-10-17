@@ -46,7 +46,7 @@ export default {
       const { data: { data } } = await api.getTopics({
         page: 1,
         tab: 'ask',
-        limit: 30,
+        limit: 10,
         mdrender: false
       })
       return {
@@ -65,7 +65,7 @@ export default {
       filter: {
         page: 1,
         tab: 'ask',
-        limit: 30
+        limit: 10
       }
     }
   },
