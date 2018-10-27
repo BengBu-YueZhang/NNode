@@ -18,7 +18,6 @@ export const mutations = {
 
 export const actions = {
   async [GET_TOPICS_DETAIL] ({ commit, state }) {
-    // console.log(state.detailId)
     const { data: { data } } = await api.getTopicDetail(state.detailId)
     commit(GET_TOPICS_DETAIL, data)
   },
