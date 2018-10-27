@@ -27,15 +27,6 @@
 import api from '~/api'
 
 export default {
-  head () {
-    return {
-      title: 'NNode',
-      // link: [
-      //   { hid: 'icon', rel: 'icon', type: 'image/x-icon', href: '~/assets/ningmeng.ico' }
-      // ]
-    }
-  },
-
   async asyncData (context) {
     // try {
     //   const { data: { data } } = await api.getTopics({
