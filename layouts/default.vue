@@ -1,6 +1,9 @@
 <template>
   <div>
     <mu-tabs
+      color="#ffff00"
+      text-color="#212121"
+      indicator-color="#212121"
       :value.sync="active"
       class="tabs">
       <mu-tab value="/ask" href="/ask">
@@ -52,4 +55,8 @@ export default {
 </script>
 
 <style>
+.mu-tab-wrapper {
+  font-weight: bold;
+  color: #212121 !important;
+}
 </style>

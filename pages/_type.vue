@@ -26,13 +26,16 @@
 <script>
 import api from '~/api'
 
+// const types = {
+//   '/ask': '问题',
+//   '/share': '分享',
+//   '/good': '精华'
+// }
+
 export default {
   head () {
     return {
-      title: 'NNode',
-      link: [
-        { hid: 'icon', rel: 'icon', type: 'image/x-icon', href: 'https://cn.vuejs.org/images/logo.png' }
-      ]
+      title: `NCNode`
     }
   },
 
