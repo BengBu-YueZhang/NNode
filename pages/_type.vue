@@ -26,33 +26,30 @@
 <script>
 import api from '~/api'
 
-// const types = {
-//   '/ask': '问题',
-//   '/share': '分享',
-//   '/good': '精华'
-// }
-
 export default {
   head () {
     return {
-      title: `NCNode`
+      title: 'NNode',
+      // link: [
+      //   { hid: 'icon', rel: 'icon', type: 'image/x-icon', href: '~/assets/ningmeng.ico' }
+      // ]
     }
   },
 
   async asyncData (context) {
-    try {
-      const { data: { data } } = await api.getTopics({
-        page: 1,
-        tab: 'ask',
-        limit: 10,
-        mdrender: false
-      })
-      return {
-        list: data
-      }
-    } catch (error) {
-      context.error()
-    }
+    // try {
+    //   const { data: { data } } = await api.getTopics({
+    //     page: 1,
+    //     tab: 'ask',
+    //     limit: 10,
+    //     mdrender: false
+    //   })
+    //   return {
+    //     list: data
+    //   }
+    // } catch (error) {
+    //   context.error()
+    // }
   },
 
   data () {
