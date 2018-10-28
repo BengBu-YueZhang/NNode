@@ -28,19 +28,20 @@ import api from '~/api'
 
 export default {
   async asyncData (context) {
-    // try {
-    //   const { data: { data } } = await api.getTopics({
-    //     page: 1,
-    //     tab: 'ask',
-    //     limit: 10,
-    //     mdrender: false
-    //   })
-    //   return {
-    //     list: data
-    //   }
-    // } catch (error) {
-    //   context.error()
-    // }
+    const { type } = context.params
+    try {
+      const { data: { data } } = await api.getTopics({
+        page: 1,
+        tab: type,
+        limit: 10,
+        mdrender: false
+      })
+      return {
+        list: data
+      }
+    } catch (error) {
+      context.error()
+    }
   },
 
   data () {
@@ -48,7 +49,7 @@ export default {
       list: [],
       filter: {
         page: 1,
-        tab: 'ask',
+        tab: this.$route.params.type,
         limit: 10
       }
     }
@@ -62,7 +63,9 @@ export default {
 
     handleShowDetail (id) {
       this.$store.dispatch('SET_DETAIL_ID', id)
-      this.$router.push({ path: '/detail' })
+      this.$router.push({
+        path: `/detail/${id}`
+      })
     }
   }
 }

@@ -18,6 +18,8 @@ module.exports = {
     ]
   },
 
+  transition: 'page',
+
   /*
   ** Customize the progress-bar color
   */
