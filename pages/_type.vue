@@ -20,6 +20,13 @@
         </mu-list-item-content>
       </mu-list-item>
     </mu-list>
+    <mu-flex justify-content="center" align-items="center" style="margin-bottom: 20px;">
+      <mu-button
+        color="warning"
+        @click="handleMoreClick">
+        more
+      </mu-button>
+    </mu-flex>
   </div>
 </template>
 
@@ -55,10 +62,25 @@ export default {
     }
   },
 
+  watch: {
+    '$route' () {
+      this.filter.page = 1
+    }
+  },
+
   methods: {
     async get (filter) {
       const { data: { data } } = await api.getTopics(this.filter)
       this.list = [...this.list, ...data]
+    },
+
+    async handleMoreClick () {
+      try {
+        this.filter.page += 1
+        await this.get(this.filter)
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     handleShowDetail (id) {
